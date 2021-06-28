@@ -1,4 +1,4 @@
-import 'package:pop_movies_and_series/models/movie_model.dart';
+import 'models.dart';
 
 class MovieResponseModel {
   int page;
@@ -14,12 +14,13 @@ class MovieResponseModel {
   });
 
   factory MovieResponseModel.fromJson(Map<String, dynamic> json) {
+    print(json['results'].length);
     return MovieResponseModel(
       page: json['page'],
       totalResults: json['totalResults'],
       totalPages: json['totalPages'],
       movies: List<MovieModel>.from(
-          json['movies']?.map((x) => MovieModel.fromJson(x))),
+          json['movies']?.map((x) => MovieModel.fromJson(x))).toList(),
     );
   }
 }
