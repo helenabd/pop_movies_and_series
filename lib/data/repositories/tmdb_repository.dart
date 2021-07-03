@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:pop_movies_and_series/data/datasource/datasource.dart';
 import 'package:pop_movies_and_series/data/models/models.dart';
 
 class TMDBRepository {
-  final TMDBDatasource tmbdDatasource;
+  static Future<MovieResponseModel> fetchAllMovies() async {
+    return await TMDBDatasource.fetchAllMovies();
+  }
 
-  TMDBRepository({@required this.tmbdDatasource})
-      : assert(tmbdDatasource != null);
-
-  Future<MovieResponseModel> fetchAllMovies() async {
-    return await tmbdDatasource.fetchAllMovies();
+  static Future<MovieDetail> showDetail(int id) async {
+    return await TMDBDatasource.showDetail(id);
   }
 }
